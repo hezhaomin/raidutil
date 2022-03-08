@@ -3,7 +3,7 @@
 - a tool for manager raid for megacli and storcli
 -  
 # Usage
-
+```
 package main
 
 import (
@@ -31,3 +31,4 @@ func main() {
 
 	fmt.Println(rt)
 }
+```
