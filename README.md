@@ -1,4 +1,7 @@
 # raidutil
+
+- a tool for manager raid for megacli and storcli
+-  
 # Usage
 
 	rt := v1.RaidType{
