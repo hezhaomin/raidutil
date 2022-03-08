@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	v1 "github.com/raidutil/api/v1"
-	"github.com/raidutil/utils"
+	v1 "github.com/hezhaomin/raidutil/api/v1"
+	"github.com/hezhaomin/raidutil/utils"
 )
 
 type Stor struct {

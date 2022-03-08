@@ -1,6 +1,6 @@
 package mega
 
-import v1 "github.com/raidutil/api/v1"
+import v1 "github.com/hezhaomin/raidutil/api/v1"
 
 type Mega struct {
 	*v1.RaidType

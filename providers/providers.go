@@ -3,9 +3,9 @@ package providers
 import (
 	"fmt"
 
-	v1 "github.com/raidutil/api/v1"
-	"github.com/raidutil/providers/mega"
-	"github.com/raidutil/providers/stor"
+	v1 "github.com/hezhaomin/raidutil/api/v1"
+	"github.com/hezhaomin/raidutil/providers/mega"
+	"github.com/hezhaomin/raidutil/providers/stor"
 )
 
 type RaidUtils interface {
