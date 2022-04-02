@@ -20,6 +20,7 @@ func New(r *v1.RaidType) (stor *Stor, err error) {
 }
 
 func (s *Stor) GetControllerCount() (count int, err error) {
+
 	args := "show ctrlcount j"
 	info, err := utils.ExecCmd(s.BinPath, args)
 	if err != nil {
@@ -28,6 +29,7 @@ func (s *Stor) GetControllerCount() (count int, err error) {
 	result := v1.CCounts{}
 	err = json.Unmarshal(info, &result)
 	if err != nil {
+		fmt.Println("1 json", err)
 		return count, err
 	}
 	if result.Controllers[0].CommandStatus.Status == "Success" {
@@ -50,13 +52,17 @@ func (s *Stor) Get() (err error) {
 		ads := v1.AdapterStat{AdapterId: i}
 		ads.PhysicalDriveStats, err = s.GetPhysicalDrive(i)
 		if err != nil {
+			fmt.Println(err)
 			break
 		}
 		ads.VirtualDriveStats, err = s.GetVirtualDrive(i)
 		if err != nil {
+			fmt.Println(err)
 			break
 		}
+		fmt.Println(ads)
 		s.AdapterStats = append(s.AdapterStats, ads)
+		fmt.Println(s)
 
 	}
 	return err
@@ -71,6 +77,7 @@ func (s *Stor) GetVirtualDrive(controller int) (vdss []v1.VirtualDriveStat, err 
 	result := v1.VDS{}
 	err = json.Unmarshal(info, &result)
 	if err != nil {
+		fmt.Println("2 json", err)
 		return vdss, err
 	}
 	if result.Controllers[0].CommandStatus.Status == "Success" {
@@ -111,12 +118,15 @@ func (s *Stor) GetPhysicalDrive(controller int) (pdss []v1.PhysicalDriveStat, er
 	result := v1.PDS{}
 	err = json.Unmarshal(info, &result)
 	if err != nil {
+		fmt.Println("3 json", err)
 		return pdss, err
 	}
 	if result.Controllers[0].CommandStatus.Status == "Success" {
 		pdss = []v1.PhysicalDriveStat{}
 		vdes := result.Controllers[0].ResponseData.DriveInformation
+
 		for _, pd := range vdes {
+
 			es := strings.Split(pd.EIDSlt, ":")
 			eid, err := strconv.ParseInt(es[0], 10, 32)
 			if err != nil {
@@ -152,21 +162,29 @@ func (s *Stor) GetPhysicalDrive(controller int) (pdss []v1.PhysicalDriveStat, er
 }
 
 func (s *Stor) CreateRaid(controller int, raidType int, name string, size string, drivers string, cache string, wtype string) (err error) {
-	args := fmt.Sprintf("/c%d add vd type=raid%d size=%s names=%s drives=%s %s %s j",
+	args := fmt.Sprintf("/c%d add vd type=raid%d size=%s name=%s drives=%s %s %s j",
 		controller, raidType, size, name, drivers, cache, wtype,
 	)
+	fmt.Println(args)
 	info, err := utils.ExecCmd(s.BinPath, args)
 	if err != nil {
+
 		return err
 	}
 	result := v1.OperateInfo{}
+
 	err = json.Unmarshal(info, &result)
+
 	if err != nil {
+		fmt.Println(err, "+++++++++++++++++++++")
 		return err
 	}
-	if result.Controllers[0].Status != "Success" {
-		return fmt.Errorf("create raid%d err:%s", raidType, result.Controllers[0].Description)
+	fmt.Println(result.Controllers[0])
+	if result.Controllers[0].CommandStatus.Status != "Success" {
+		fmt.Println(err, "=============")
+		return fmt.Errorf("create raid%d err:%s", raidType, result.Controllers[0].CommandStatus.Description)
 	}
+
 	return err
 }
 
@@ -181,8 +199,8 @@ func (s *Stor) DelRaid(controller int, vd int) (err error) {
 	if err != nil {
 		return err
 	}
-	if result.Controllers[0].Status != "Success" {
-		return fmt.Errorf("delete raid vd%d err:%s", vd, result.Controllers[0].Description)
+	if result.Controllers[0].CommandStatus.Status != "Success" {
+		return fmt.Errorf("delete raid vd%d err:%s", vd, result.Controllers[0].CommandStatus.Description)
 	}
 	return err
 
@@ -203,8 +221,8 @@ func (s *Stor) InitRaid(controller int, vd int, full bool) (err error) {
 	if err != nil {
 		return err
 	}
-	if result.Controllers[0].Status != "Success" {
-		return fmt.Errorf("delete raid vd%d err:%s", vd, result.Controllers[0].Description)
+	if result.Controllers[0].CommandStatus.Status != "Success" {
+		return fmt.Errorf("delete raid vd%d err:%s", vd, result.Controllers[0].CommandStatus.Description)
 	}
 	return err
 

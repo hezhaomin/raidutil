@@ -1,9 +1,19 @@
 package v1
 
 type OperateInfo struct {
-	Controllers []CommandStatus `json:"Controllers"`
+	Controllers []Controllers `json:"Controllers"`
 }
 
+type CommandStatus struct {
+	CLIVersion      string `json:"CLI Version"`
+	OperatingSystem string `json:"Operating system"`
+	Controller      int    `json:"Controller"`
+	Status          string `json:"Status"`
+	Description     string `json:"Description"`
+}
+type Controllers struct {
+	CommandStatus CommandStatus `json:"Command Status"`
+}
 type CCounts struct {
 	Controllers []CCount `json:"Controllers"`
 }
@@ -14,13 +24,7 @@ type VDS struct {
 type PDS struct {
 	Controllers []PD `json:"Controllers"`
 }
-type CommandStatus struct {
-	CLIVersion      string `json:"CLI Version"`
-	OperatingSystem string `json:"Operating system"`
-	StatusCode      int    `json:"Status Code"`
-	Status          string `json:"Status"`
-	Description     string `json:"Description"`
-}
+
 type CountResponseData struct {
 	ControllerCount int `json:"Controller Count"`
 }
@@ -45,16 +49,16 @@ type PDResponseData struct {
 		EIDSlt string `json:"EID:Slt"`
 		Did    int    `json:"DID"`
 		State  string `json:"State"`
-		Dg     int    `json:"DG"`
-		Size   string `json:"Size"`
-		Intf   string `json:"Intf"`
-		Med    string `json:"Med"`
-		Sed    string `json:"SED"`
-		Pi     string `json:"PI"`
-		SeSz   string `json:"SeSz"`
-		Model  string `json:"Model"`
-		Sp     string `json:"Sp"`
-		Type   string `json:"Type"`
+
+		Size  string `json:"Size"`
+		Intf  string `json:"Intf"`
+		Med   string `json:"Med"`
+		Sed   string `json:"SED"`
+		Pi    string `json:"PI"`
+		SeSz  string `json:"SeSz"`
+		Model string `json:"Model"`
+		Sp    string `json:"Sp"`
+		Type  string `json:"Type"`
 	} `json:"Drive Information"`
 }
 type CCount struct {
