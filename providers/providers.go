@@ -13,7 +13,7 @@ type RaidUtils interface {
 	Get() (err error)
 	GetPhysicalDrive(controller int) (vdss []v1.PhysicalDriveStat, err error)
 	GetVirtualDrive(controller int) (pdss []v1.VirtualDriveStat, err error)
-	CreateRaid(controller int, raidType int, name string, size string, drivers string, cache string, wtype string) (err error)
+	CreateRaid(controller int, raidType int, name string, size string, drivers string, cache string, wtype string, pdperarray int) (err error)
 	DelRaid(controller int, vd int) (err error)
 	InitRaid(controller int, vd int, full bool) (err error)
 }

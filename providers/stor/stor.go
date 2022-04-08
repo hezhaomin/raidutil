@@ -161,10 +161,18 @@ func (s *Stor) GetPhysicalDrive(controller int) (pdss []v1.PhysicalDriveStat, er
 	)
 }
 
-func (s *Stor) CreateRaid(controller int, raidType int, name string, size string, drivers string, cache string, wtype string) (err error) {
-	args := fmt.Sprintf("/c%d add vd type=raid%d size=%s name=%s drives=%s %s %s j",
-		controller, raidType, size, name, drivers, cache, wtype,
-	)
+func (s *Stor) CreateRaid(controller int, raidType int, name string, size string, drivers string, cache string, wtype string, pdperarray int) (err error) {
+	args := ""
+	if pdperarray == 0 {
+		args = fmt.Sprintf("/c%d add vd type=raid%d size=%s name=%s drives=%s %s %s j",
+			controller, raidType, size, name, drivers, cache, wtype,
+		)
+	} else {
+		args = fmt.Sprintf("/c%d add vd type=raid%d size=%s name=%s drives=%s %s %s pdperarray=%d j",
+			controller, raidType, size, name, drivers, cache, wtype, pdperarray,
+		)
+	}
+
 	fmt.Println(args)
 	info, err := utils.ExecCmd(s.BinPath, args)
 	if err != nil {

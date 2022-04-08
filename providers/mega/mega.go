@@ -24,7 +24,7 @@ func (m *Mega) GetPhysicalDrive(controller int) (pdss []v1.PhysicalDriveStat, er
 func (m *Mega) GetVirtualDrive(controller int) (vdss []v1.VirtualDriveStat, err error) {
 	return vdss, err
 }
-func (m *Mega) CreateRaid(controller int, raidType int, name string, size string, drivers string, cache string, wtype string) (err error) {
+func (m *Mega) CreateRaid(controller int, raidType int, name string, size string, drivers string, cache string, wtype string, pdperarray int) (err error) {
 	return err
 }
 func (m *Mega) DelRaid(controller int, vd int) (err error) {
