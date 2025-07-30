@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  }
+}
+
+@layer components {
+  .slide {
+    @apply w-full h-screen overflow-hidden relative;
+  }
+  
+  .slide-content {
+    @apply w-full h-full p-8 flex flex-col justify-center;
+  }
+  
+  .ppt-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6;
+  }
+  
+  .ppt-subtitle {
+    @apply text-xl md:text-2xl text-blue-200 mb-8;
+  }
+  
+  .feature-card {
+    @apply bg-gradient-to-br from-blue-700 to-blue-800 rounded-xl p-6 shadow-lg border border-blue-600 hover:shadow-xl transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .tech-card {
+    @apply bg-gradient-to-r from-orange-500 to-red-500 rounded-lg p-4 text-center text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300;
+  }
+  
+  .core-layer {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-6 text-center text-white shadow-lg;
+  }
+  
+  .service-layer {
+    @apply bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg p-4 text-center text-white;
+  }
+}

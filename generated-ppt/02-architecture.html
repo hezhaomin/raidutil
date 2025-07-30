@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统架构 - RADOS: 可靠的分布式对象存储</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+        }
+        .nav-btn {
+            background: #2563eb;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+        .nav-btn:disabled {
+            background: #6b7280;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="font-chinese">
+    <!-- 章节内容 -->
+    <div class="min-h-screen gradient-bg">
+        
+        <div class="w-full min-h-screen p-12">
+            <div class="max-w-6xl mx-auto">
+                <h1 class="text-5xl font-bold text-white mb-12 text-center">
+                    系统架构
+                </h1>
+                
+                
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 mb-6 text-center">
+                    <h2 class="text-3xl font-bold text-white mb-4">
+                        🛡️ RADOS 核心层
+                    </h2>
+                    <p class="text-xl text-blue-100">
+                        Reliable Autonomic Distributed Object Store - 可靠的自主分布式对象存储
+                    </p>
+                </div>
+                
+
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    
+                    <div class="bg-blue-700/60 backdrop-blur-sm rounded-lg p-6 text-center border border-blue-600">
+                        <h3 class="text-2xl font-bold text-white mb-2">
+                            📊 OSD集群
+                        </h3>
+                        <p class="text-gray-200">物理存储设备管理，负责实际数据存储和检索</p>
+                    </div>
+                    
+                    <div class="bg-blue-700/60 backdrop-blur-sm rounded-lg p-6 text-center border border-blue-600">
+                        <h3 class="text-2xl font-bold text-white mb-2">
+                            🖥️ Monitor集群
+                        </h3>
+                        <p class="text-gray-200">集群状态监控管理，维护集群健康状态</p>
+                    </div>
+                    
+                </div>
+                
+
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="bg-blue-700/60 backdrop-blur-sm rounded-lg p-6 border border-blue-600 text-center">
+                        <h4 class="text-xl font-bold text-white mb-3">
+                            🔄 数据复制
+                        </h4>
+                        <p class="text-blue-100">自动数据复制确保高可用性和数据安全</p>
+                    </div>
+                    
+                    <div class="bg-blue-700/60 backdrop-blur-sm rounded-lg p-6 border border-blue-600 text-center">
+                        <h4 class="text-xl font-bold text-white mb-3">
+                            ⚡ CRUSH算法
+                        </h4>
+                        <p class="text-blue-100">智能数据分布和定位，无需中心化元数据</p>
+                    </div>
+                    
+                    <div class="bg-blue-700/60 backdrop-blur-sm rounded-lg p-6 border border-blue-600 text-center">
+                        <h4 class="text-xl font-bold text-white mb-3">
+                            🛠️ 自我修复
+                        </h4>
+                        <p class="text-blue-100">自动故障检测和恢复，保证系统稳定性</p>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <nav style="position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.5); border-radius: 0.5rem; padding: 1rem; display: flex; gap: 1rem; z-index: 50;">
+        <a href="01-introduction.html" class="nav-btn">← 上一章</a>
+        <a href="index.html" class="nav-btn">🏠 目录</a>
+        <a href="03-features.html" class="nav-btn">下一章 →</a>
+    </nav>
+    
+    <!-- 章节指示器 -->
+    <div style="position: fixed; top: 1.5rem; right: 1.5rem; background: rgba(0,0,0,0.5); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; z-index: 50;">
+        3 / 5
+    </div>
+
+    <!-- 章节标题指示器 -->
+    <div style="position: fixed; top: 1.5rem; left: 1.5rem; background: rgba(0,0,0,0.5); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; z-index: 50;">
+        系统架构
+    </div>
+
+    <script>
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                window.location.href = '03-features.html';
+            } else if (e.key === 'ArrowLeft') {
+                window.location.href = '01-introduction.html';
+            } else if (e.key === 'Home') {
+                window.location.href = 'index.html';
+            } else if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
