@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统介绍 - RADOS: 可靠的分布式对象存储</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+        }
+        .nav-btn {
+            background: #2563eb;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+        .nav-btn:disabled {
+            background: #6b7280;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="font-chinese">
+    <!-- 章节内容 -->
+    <div class="min-h-screen gradient-bg">
+        
+        <div class="w-full min-h-screen p-12">
+            <div class="max-w-6xl mx-auto">
+                <h1 class="text-5xl font-bold text-white mb-12 text-center">
+                    系统介绍
+                </h1>
+                
+                
+        <div class="mb-8">
+            
+            <h2 class="text-3xl font-bold text-white mb-6">
+                什么是RADOS
+            </h2>
+            
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-blue-700/60 backdrop-blur-sm rounded-lg p-6 border border-blue-600 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <h3 class="text-xl font-bold text-white mb-3">
+                        🏗️ 分布式架构
+                    </h3>
+                    <p class="text-blue-100">
+                        采用分布式设计，支持水平扩展，可处理PB级数据存储
+                    </p>
+                </div>
+                
+                <div class="bg-blue-700/60 backdrop-blur-sm rounded-lg p-6 border border-blue-600 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <h3 class="text-xl font-bold text-white mb-3">
+                        🔄 自动化管理
+                    </h3>
+                    <p class="text-blue-100">
+                        自动处理故障检测和数据恢复，减少人工干预
+                    </p>
+                </div>
+                
+                <div class="bg-blue-700/60 backdrop-blur-sm rounded-lg p-6 border border-blue-600 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <h3 class="text-xl font-bold text-white mb-3">
+                        📦 对象存储
+                    </h3>
+                    <p class="text-blue-100">
+                        以对象形式存储数据，提供高度的灵活性和可扩展性
+                    </p>
+                </div>
+                
+            </div>
+            
+            
+            <p class="text-xl text-blue-100 leading-relaxed">
+                RADOS (Reliable Autonomic Distributed Object Store) 是Ceph存储集群的基础，它是一个可靠的、自动化的、分布式的对象存储系统。
+            </p>
+            
+        </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <nav style="position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.5); border-radius: 0.5rem; padding: 1rem; display: flex; gap: 1rem; z-index: 50;">
+        <a href="00-cover.html" class="nav-btn">← 上一章</a>
+        <a href="index.html" class="nav-btn">🏠 目录</a>
+        <a href="02-architecture.html" class="nav-btn">下一章 →</a>
+    </nav>
+    
+    <!-- 章节指示器 -->
+    <div style="position: fixed; top: 1.5rem; right: 1.5rem; background: rgba(0,0,0,0.5); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; z-index: 50;">
+        2 / 5
+    </div>
+
+    <!-- 章节标题指示器 -->
+    <div style="position: fixed; top: 1.5rem; left: 1.5rem; background: rgba(0,0,0,0.5); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; z-index: 50;">
+        系统介绍
+    </div>
+
+    <script>
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                window.location.href = '02-architecture.html';
+            } else if (e.key === 'ArrowLeft') {
+                window.location.href = '00-cover.html';
+            } else if (e.key === 'Home') {
+                window.location.href = 'index.html';
+            } else if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

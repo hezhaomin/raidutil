@@ -80,12 +80,26 @@ npm run build
 - **内容生成**: 准确、逻辑清晰的技术内容创建
 - **样式规范**: 统一的颜色系统和组件样式
 - **交互设计**: 完整的导航和控制功能
+- **多文件生成**: 为每个章节生成独立的HTML文件
 
 ### 使用方法
-参考 `agent-system-prompt.md` 文件中的详细说明，可以直接使用该提示词来指导AI生成PPT内容。
+参考 `agent-system-prompt.md` 文件中的详细说明，Agent会为每个章节生成独立的HTML文件：
+
+#### 文件结构示例
+```
+index.html           # 主目录页面
+00-cover.html        # 封面页
+01-introduction.html # 介绍页  
+02-architecture.html # 架构页
+03-features.html     # 功能页
+04-summary.html      # 总结页
+```
+
+每个文件都是完整的、可独立运行的HTML页面，包含完整的导航功能。
 
 ## 📝 PPT生成器使用示例
 
+### 单文件模式 (原版)
 ```javascript
 // 引入PPT生成器
 const PPTGenerator = require('./ppt-generator.js');
@@ -106,21 +120,7 @@ const config = {
                 coreComponent: {
                     title: "核心组件",
                     description: "系统核心架构说明"
-                },
-                components: [
-                    {
-                        icon: "📊",
-                        title: "数据层",
-                        description: "数据存储和管理"
-                    }
-                ],
-                features: [
-                    {
-                        icon: "🔄",
-                        title: "高可用",
-                        description: "99.9%可用性保证"
-                    }
-                ]
+                }
             }
         }
     ]
@@ -128,6 +128,66 @@ const config = {
 
 // 生成PPT HTML
 const pptHtml = generator.generatePPT(config);
+```
+
+### 多文件模式 (推荐)
+```javascript
+// 引入多文件PPT生成器
+const { MultiFilePPTGenerator } = require('./demo-multi-file-generation.js');
+
+// 创建生成器实例
+const generator = new MultiFilePPTGenerator();
+
+// 配置PPT内容
+const config = {
+    title: "RADOS: 可靠的分布式对象存储",
+    subtitle: "Reliable Autonomic Distributed Object Store",
+    theme: "technical",
+    chapters: [
+        {
+            type: "cover",
+            title: "RADOS",
+            subtitle: "可靠的分布式对象存储",
+            description: "现代化的分布式存储解决方案",
+            slug: "cover"
+        },
+        {
+            type: "architecture",
+            title: "系统架构",
+            description: "RADOS架构设计",
+            content: {
+                coreComponent: {
+                    title: "🛡️ RADOS 核心层",
+                    description: "Reliable Autonomic Distributed Object Store"
+                },
+                components: [
+                    {
+                        icon: "📊",
+                        title: "OSD集群",
+                        description: "物理存储设备管理"
+                    }
+                ]
+            },
+            slug: "architecture"
+        }
+    ]
+};
+
+// 生成多个HTML文件
+const files = generator.generatePPTFiles(config);
+
+// files 对象包含所有生成的HTML文件
+// {
+//   'index.html': '主目录页面内容',
+//   '00-cover.html': '封面页内容',
+//   '01-architecture.html': '架构页内容'
+// }
+```
+
+### 快速生成演示
+```bash
+# 运行演示脚本，自动生成完整的PPT文件集
+node demo-multi-file-generation.js
 ```
 
 ## 🎮 交互控制

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>总结 - RADOS: 可靠的分布式对象存储</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+        }
+        .nav-btn {
+            background: #2563eb;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+        .nav-btn:disabled {
+            background: #6b7280;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="font-chinese">
+    <!-- 章节内容 -->
+    <div class="min-h-screen gradient-bg">
+        
+        <div class="w-full min-h-screen p-12">
+            <div class="max-w-6xl mx-auto">
+                <h1 class="text-5xl font-bold text-white mb-12 text-center">
+                    总结
+                </h1>
+                
+                <div class="text-xl text-blue-100 leading-relaxed">RADOS作为Ceph的核心组件，为现代化存储需求提供了完整的解决方案。其分布式架构、自动化管理和高可靠性特性，使其成为云计算和大数据场景下的理想选择。</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <nav style="position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.5); border-radius: 0.5rem; padding: 1rem; display: flex; gap: 1rem; z-index: 50;">
+        <a href="03-features.html" class="nav-btn">← 上一章</a>
+        <a href="index.html" class="nav-btn">🏠 目录</a>
+        <button disabled class="nav-btn">下一章 →</button>
+    </nav>
+    
+    <!-- 章节指示器 -->
+    <div style="position: fixed; top: 1.5rem; right: 1.5rem; background: rgba(0,0,0,0.5); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; z-index: 50;">
+        5 / 5
+    </div>
+
+    <!-- 章节标题指示器 -->
+    <div style="position: fixed; top: 1.5rem; left: 1.5rem; background: rgba(0,0,0,0.5); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; z-index: 50;">
+        总结
+    </div>
+
+    <script>
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                
+            } else if (e.key === 'ArrowLeft') {
+                window.location.href = '03-features.html';
+            } else if (e.key === 'Home') {
+                window.location.href = 'index.html';
+            } else if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
