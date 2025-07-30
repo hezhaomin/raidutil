@@ -1,0 +1,22 @@
+{
+  "name": "ppt-generator",
+  "version": "1.0.0",
+  "description": "AI-powered PPT generator with Tailwind CSS",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx live-server --host=0.0.0.0 --port=3000",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "live-server": "^1.2.2"
+  },
+  "keywords": [
+    "ppt",
+    "presentation",
+    "tailwind",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT"
+}
