@@ -1,8 +1,12 @@
 # raidutil
 
 - a tool for manager raid for megacli and storcli
--  
-# Usage
+
+## 系统架构
+
+请参考 [架构文档](ARCHITECTURE.md) 查看详细的系统架构图和说明。
+
+## Usage
 ```
 package main
 
